@@ -9,5 +9,5 @@ RUN dotnet publish -c release -o /app --no-restore
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /app ./
 ENTRYPOINT ["dotnet", "core.rbac_postgres.dll"]
